@@ -22,6 +22,20 @@ func NewSimpleString(str string) *SimpleString {
 	}
 }
 
+type ErrMsg struct {
+	Err string
+}
+
+func (e *ErrMsg) ToBytes() []byte {
+	return []byte("-" + e.Err + CRLF)
+}
+
+func NewErrMsg(err string) *ErrMsg {
+	return &ErrMsg{
+		Err: err,
+	}
+}
+
 type Array struct {
 	Arg [][]byte
 }
